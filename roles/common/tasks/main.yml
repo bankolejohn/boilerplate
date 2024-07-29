@@ -1,0 +1,24 @@
+# deploy-boilerplate/roles/common/tasks/main.yml
+- name: Create user hng with sudo privileges
+  user:
+    name: hng
+    groups: sudo
+    state: present
+    createhome: yes
+    shell: /bin/bash
+
+- name: Create /var/secrets directory
+  file:
+    path: /var/secrets
+    state: directory
+    owner: hng
+    group: hng
+    mode: '0750'
+
+- name: Create /var/log/stage_5b directory
+  file:
+    path: /var/log/stage_5b
+    state: directory
+    owner: hng
+    group: hng
+    mode: '0750'

@@ -1,0 +1,9 @@
+# deploy-boilerplate/main.yaml
+- hosts: hng
+  become: true
+  roles:
+    - common
+    - postgres
+    - redis
+    - app
+    - nginx
