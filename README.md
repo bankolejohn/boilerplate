@@ -1,13 +1,16 @@
-Documentation for Automated Deployment and Configuration with Ansible
-Overview
+# Documentation for Automated Deployment and Configuration with Ansible
+
+
+## Overview
 This guide covers automating the deployment and configuration of a boilerplate application using Ansible. It includes setting up dependencies, PostgreSQL, Redis, Nginx, and logging.
 
-Prerequisites
+### Prerequisites
 Fresh Ubuntu 22.04 Server with Python 3.12 installed.
+
 Ansible installed on the control node.
 
 
-Project Structure
+### Project Structure
 
 project/
 │
@@ -15,10 +18,13 @@ project/
 ├── inventory.cfg          # Ansible inventory file
 
 
-Ansible Playbook Breakdown
-Common Tasks
+### Ansible Playbook Breakdown
+
+- Common Tasks
+  
 Create User with Sudo Privileges:
 
+```bash
 - name: Create user hng with sudo privileges
   user:
     name: hng
@@ -34,10 +40,12 @@ Create User with Sudo Privileges:
     create: yes
     state: present
     line: 'hng ALL=(ALL) NOPASSWD:ALL'
+```
 
 
-Create Directories:
+### Create Directories:
 
+```bash
 - name: Create /var/secrets and /var/log/stage_5b directories
   file:
     path: "{{ item }}"
@@ -48,9 +56,11 @@ Create Directories:
   loop:
     - /var/secrets
     - /var/log/stage_5b
+```
 
 
 PostgreSQL Setup
+
 Install and Configure PostgreSQL
 
 - name: Install PostgreSQL
