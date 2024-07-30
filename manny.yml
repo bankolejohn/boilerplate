@@ -1,5 +1,5 @@
 ---
-- hosts: ec2
+- hosts: hng
   become: yes
   become_method: sudo
   become_user: root
@@ -176,7 +176,7 @@
       copy:
         content: |
           server {
-            listen 80;
+            listen 0.0.0.0:80;
             server_name localhost;
 
             location / {
