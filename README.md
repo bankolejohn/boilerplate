@@ -59,10 +59,11 @@ Create User with Sudo Privileges:
 ```
 
 
-PostgreSQL Setup
+### PostgreSQL Setup
 
 Install and Configure PostgreSQL
 
+```bash
 - name: Install PostgreSQL
   apt:
     name: postgresql
@@ -95,11 +96,13 @@ Install and Configure PostgreSQL
     name: admin
     password: secure_password
     priv: "ALL"
+```
 
-Redis Setup
+### Redis Setup
 
 Install and Configure Redis:
 
+```bash
 - name: Install Redis
   apt:
     name: redis-server
@@ -110,11 +113,14 @@ Install and Configure Redis:
     name: redis-server
     state: started
     enabled: true
+```
 
 
-Node.js and Yarn Installation
+### Node.js and Yarn Installation
+
 Install Node.js 20.x and Yarn:
 
+```bash
 - name: Download Node.js 20.x setup script
   get_url:
     url: "https://deb.nodesource.com/setup_20.x"
@@ -137,10 +143,14 @@ Install Node.js 20.x and Yarn:
   apt:
     name: yarn
     state: present
+```
 
-Application Deployment
+
+### Application Deployment
+
 Clone Repository and Install Dependencies:
 
+```bash
 - name: Clone repository
   git:
     repo: 'https://github.com/yourusername/yourrepo.git'
@@ -160,10 +170,12 @@ Clone Repository and Install Dependencies:
   command: yarn install
   args:
     chdir: /opt/stage_5b
+```
 
 
-Configure Environment Variables and Start Application:
+### Configure Environment Variables and Start Application:
 
+```bash
 - name: Configure environment variables
   copy:
     content: |
@@ -200,10 +212,13 @@ Configure Environment Variables and Start Application:
     chdir: /opt/stage_5b
   environment:
     NODE_ENV: production
+```
 
-Nginx Configuration
+### Nginx Configuration
+
 Install and Configure Nginx:
 
+```
 - name: Install Nginx
   apt:
     name: nginx
@@ -243,19 +258,22 @@ Install and Configure Nginx:
   service:
     name: nginx
     state: reloaded
+```
 
-Running the Playbook
+
+### Running the Playbook
+
 Syntax Check:
 
-ansible-playbook main.yaml --syntax-check
+```ansible-playbook main.yaml --syntax-check```
 
 Dry Run:
 
-ansible-playbook main.yaml --check -b
+```ansible-playbook main.yaml --check -b```
 
 Execute:
 
-ansible-playbook main.yaml -b
+```ansible-playbook main.yaml -b```
 
 
 
