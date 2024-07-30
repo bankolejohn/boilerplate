@@ -104,18 +104,18 @@
 
     # Application tasks
     - name: Configure Git to trust the repository directory
-      command: git config --global --add safe.directory /opt/stage_5c
+      command: git config --global --add safe.directory /opt/stage_5b
 
     - name: Clone repository
       git:
         repo: 'https://github.com/hngprojects/hng_boilerplate_expressjs.git'
-        dest: /opt/stage_5c
+        dest: /opt/stage_5b
         version: devops
         force: yes
 
-    - name: Change ownership of /opt/stage_5c
+    - name: Change ownership of /opt/stage_5b
       file:
-        path: /opt/stage_5c
+        path: /opt/stage_5b
         state: directory
         owner: hng
         group: hng
@@ -139,7 +139,7 @@
 
     - name: Install application dependencies
       yarn:
-        path: /opt/stage_5c
+        path: /opt/stage_5b
         state: present
 
     - name: Configure environment variables
@@ -148,15 +148,15 @@
           PORT=3000
           DATABASE_URL=postgresql://admin:secure_password@localhost/myappdb
           REDIS_URL=redis://localhost:6379
-        dest: /opt/stage_5c/.env
+        dest: /opt/stage_5b/.env
         owner: hng
         group: hng
         mode: '0600'
 
     - name: Start application
-      shell: "yarn start > /var/log/stage_5c/out.log 2> /var/log/stage_5c/error.log &"
+      shell: "yarn start > /var/log/stage_5b/out.log 2> /var/log/stage_5b/error.log &"
       args:
-        chdir: /opt/stage_5c
+        chdir: /opt/stage_5b
       environment:
         NODE_ENV: production
 
