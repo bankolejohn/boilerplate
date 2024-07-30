@@ -121,6 +121,16 @@
         group: hng
         recurse: yes
 
+    - name: Add NodeSource repository for Node.js 18.x
+      shell: curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+      args:
+        executable: /bin/bash
+
+    - name: Install Node.js
+      apt:
+        name: nodejs
+        state: present
+
     - name: Add Yarn APT key
       apt_key:
         url: https://dl.yarnpkg.com/debian/pubkey.gpg
