@@ -263,15 +263,15 @@ Install and Configure Nginx:
 
 ### Running the Playbook
 
-Syntax Check:
+- Syntax Check:
 
 ```ansible-playbook main.yaml --syntax-check```
 
-Dry Run:
+- Dry Run:
 
 ```ansible-playbook main.yaml --check -b```
 
-Execute:
+- Execute:
 
 ```ansible-playbook main.yaml -b```
 
